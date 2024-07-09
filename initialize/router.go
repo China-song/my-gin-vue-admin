@@ -1,9 +1,12 @@
 package initialize
 
 import (
+	"github.com/China-song/my-gin-vue-admin/docs"
 	"github.com/China-song/my-gin-vue-admin/global"
 	"github.com/China-song/my-gin-vue-admin/router"
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 	"net/http"
 )
 
@@ -16,6 +19,9 @@ func Routers() *gin.Engine {
 
 	systemRouter := router.RouterGroupApp.System
 
+	docs.SwaggerInfo.BasePath = global.GVA_CONFIG.System.RouterPrefix
+	Router.GET(global.GVA_CONFIG.System.RouterPrefix+"/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
 	PublicGroup := Router.Group(global.GVA_CONFIG.System.RouterPrefix)
 	{
 		// 健康检测
@@ -27,5 +33,6 @@ func Routers() *gin.Engine {
 		systemRouter.InitBaseRouter(PublicGroup)
 	}
 
+	global.GVA_LOG.Info("router register success")
 	return Router
 }
