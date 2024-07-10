@@ -32,3 +32,14 @@ zap:
   show-line: true
   log-in-console: true
   retention-day: -1
+captcha:
+  key-long: 6
+  img-width: 240
+  img-height: 80
+  open-captcha: 0
+  open-captcha-timeout: 3600
+jwt:
+  signing-key: 16919fc3-877e-4ba4-a3e9-e28faca699c7
+  expires-time: 7d
+  buffer-time: 1d
+  issuer: Song

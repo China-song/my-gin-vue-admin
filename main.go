@@ -15,8 +15,7 @@ import (
 // @BasePath                    /
 func main() {
 	global.GVA_VP = core.Viper() // 初始化Viper
-	// TODO: 检验config 2024/07/05 18:05
-	//initialize.OtherInit()
+	initialize.OtherInit()
 	global.GVA_LOG = core.Zap()
 	zap.ReplaceGlobals(global.GVA_LOG)
 	global.GVA_DB = initialize.Gorm() // gorm连接数据库
